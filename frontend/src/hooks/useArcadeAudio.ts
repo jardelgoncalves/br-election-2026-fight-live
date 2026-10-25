@@ -5,6 +5,14 @@ import type { CombatEvent } from '../types';
 const LOOP_DURATION = 4;
 const STEP_DURATION = LOOP_DURATION / 16;
 
+function createInstanceId() {
+  if (typeof globalThis.crypto?.randomUUID === 'function') {
+    return globalThis.crypto.randomUUID();
+  }
+
+  return `audio-${Date.now()}-${Math.random().toString(36).slice(2)}`;
+}
+
 const melody = [
   293.66, 0, 349.23, 392, 293.66, 0, 440, 392,
   261.63, 0, 349.23, 440, 293.66, 349.23, 392, 523.25,
@@ -95,7 +103,7 @@ export function useArcadeAudio() {
   const enabledRef = useRef(false);
   const toggleInFlightRef = useRef(false);
   const channelRef = useRef<BroadcastChannel | null>(null);
-  const instanceIdRef = useRef(crypto.randomUUID());
+  const instanceIdRef = useRef(createInstanceId());
   const [enabled, setEnabled] = useState(false);
 
   const stopMusic = useCallback(() => {
