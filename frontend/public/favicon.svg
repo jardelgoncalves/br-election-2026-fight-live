@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="split" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#dc2626"/>
+      <stop offset="0.49" stop-color="#991b1b"/>
+      <stop offset="0.51" stop-color="#065f46"/>
+      <stop offset="1" stop-color="#16a34a"/>
+    </linearGradient>
+  </defs>
+  <path d="M10 2h44l8 8v44l-8 8H10l-8-8V10z" fill="url(#split)" stroke="#fde68a" stroke-width="3"/>
+  <path d="M18 17l28 30M46 17L18 47" stroke="#fff" stroke-width="5" stroke-linecap="square"/>
+  <rect x="22" y="25" width="20" height="14" fill="#070910" stroke="#fde68a"/>
+  <text x="32" y="36" text-anchor="middle" fill="#fde68a" font-family="monospace" font-size="11" font-weight="bold">VS</text>
+</svg>

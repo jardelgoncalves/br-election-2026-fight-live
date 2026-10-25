@@ -1,0 +1,297 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Courier New", ui-monospace, monospace;
+}
+
+:root {
+  color-scheme: dark;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #070910;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* { box-sizing: border-box; }
+html, body { overflow-x: hidden; }
+body { margin: 0; min-width: 320px; min-height: 100vh; }
+button { cursor: pointer; }
+
+.app-shell {
+  background:
+    radial-gradient(circle at 50% -20%, rgba(14, 165, 233, 0.14), transparent 38%),
+    radial-gradient(circle at 8% 42%, rgba(220, 38, 38, 0.08), transparent 28%),
+    radial-gradient(circle at 92% 42%, rgba(5, 150, 105, 0.08), transparent 28%),
+    #070910;
+}
+
+.scanlines {
+  background: repeating-linear-gradient(to bottom, transparent 0, transparent 3px, rgba(255, 255, 255, 0.035) 4px);
+  mix-blend-mode: overlay;
+}
+
+.brand-lockup {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.brand-emblem {
+  position: relative;
+  width: 52px;
+  height: 46px;
+  flex: none;
+  overflow: visible;
+  border: 2px solid #fde68a;
+  clip-path: polygon(8px 0, 44px 0, 52px 8px, 52px 38px, 44px 46px, 8px 46px, 0 38px, 0 8px);
+  background: #10131d;
+  box-shadow: 4px 4px 0 #b45309;
+  filter: drop-shadow(0 0 10px rgba(251, 191, 36, 0.2));
+}
+
+.brand-emblem::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  z-index: 1;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  clip-path: polygon(5px 0, calc(100% - 5px) 0, 100% 5px, 100% calc(100% - 5px), calc(100% - 5px) 100%, 5px 100%, 0 calc(100% - 5px), 0 5px);
+}
+
+.brand-emblem-red,
+.brand-emblem-green {
+  position: absolute;
+  inset-block: 0;
+  width: 58%;
+}
+
+.brand-emblem-red {
+  left: 0;
+  background: linear-gradient(135deg, #ef4444, #991b1b 72%);
+  clip-path: polygon(0 0, 100% 0, 68% 100%, 0 100%);
+}
+
+.brand-emblem-green {
+  right: 0;
+  background: linear-gradient(315deg, #22c55e, #065f46 72%);
+  clip-path: polygon(32% 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.brand-emblem-swords {
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  z-index: 2;
+  color: white;
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(2px 2px 0 rgba(0, 0, 0, 0.75));
+}
+
+.brand-emblem-vs {
+  position: absolute;
+  left: 50%;
+  bottom: 2px;
+  z-index: 3;
+  transform: translateX(-50%);
+  font-family: "Courier New", monospace;
+  font-size: 7px;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.08em;
+  color: #fef3c7;
+  text-shadow: 1px 1px 0 #78350f;
+}
+
+.brand-wordmark { min-width: 0; }
+
+.brand-kicker {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 0 3px;
+  color: #fcd34d;
+  font-family: "Courier New", monospace;
+  font-size: 7px;
+  font-weight: 700;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  white-space: nowrap;
+}
+
+.brand-kicker-line {
+  width: 14px;
+  height: 1px;
+  background: linear-gradient(90deg, #ef4444, #fcd34d, #22c55e);
+}
+
+.brand-name {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+  margin: 0;
+  font-family: "Courier New", monospace;
+  font-size: 17px;
+  font-weight: 900;
+  line-height: 0.9;
+  text-transform: uppercase;
+  letter-spacing: -0.08em;
+  white-space: nowrap;
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.8);
+}
+
+.brand-name strong {
+  color: #fcd34d;
+  font-style: italic;
+  font-weight: 900;
+  letter-spacing: -0.12em;
+  transform: skewX(-5deg);
+  text-shadow: 2px 2px 0 #92400e;
+}
+
+.panel {
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.012));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035);
+}
+
+.icon-button {
+  display: inline-flex;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.7);
+  transition: 150ms ease;
+}
+
+.icon-button { width: 40px; }
+
+.icon-button:hover {
+  border-color: rgba(253, 224, 71, 0.5);
+  background: rgba(253, 224, 71, 0.1);
+  color: rgb(254, 240, 138);
+  transform: translateY(-1px);
+}
+
+.health-shell {
+  clip-path: polygon(0 0, 100% 0, calc(100% - 8px) 100%, 8px 100%);
+}
+
+.health-segments {
+  background: repeating-linear-gradient(90deg, transparent 0, transparent 9%, #000 9.5%, #000 10%);
+}
+
+.arena {
+  min-height: clamp(390px, 56vw, 610px);
+  isolation: isolate;
+}
+
+.arena-sky {
+  background:
+    linear-gradient(to bottom, rgba(4, 7, 16, 0.1) 0%, rgba(4, 7, 16, 0.12) 45%, rgba(4, 7, 16, 0.38) 100%),
+    radial-gradient(circle at 50% 48%, transparent 28%, rgba(3, 5, 12, 0.22) 100%),
+    url('/assets/backgrounds/congresso-floresta-incendio-v1.png') center center / cover no-repeat;
+  image-rendering: pixelated;
+}
+
+.fighter-sprite {
+  width: clamp(210px, 38vw, 430px);
+  aspect-ratio: 517 / 724;
+  flex: none;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: 100% 100%;
+  image-rendering: pixelated;
+  filter:
+    saturate(0.72)
+    brightness(0.86)
+    contrast(0.96)
+    drop-shadow(0 18px 14px rgba(0, 0, 0, 0.55));
+  will-change: transform, filter;
+}
+
+.fighter-idle { animation: fighter-idle 1.8s steps(2, end) infinite; }
+.fighter-left.fighter-windup { animation: windup-left 160ms ease-out forwards; }
+.fighter-right.fighter-windup { animation: windup-right 160ms ease-out forwards; }
+.fighter-left.fighter-attack { animation: attack-left 420ms cubic-bezier(0.12, 0.7, 0.28, 1) forwards; }
+.fighter-right.fighter-attack { animation: attack-right 420ms cubic-bezier(0.12, 0.7, 0.28, 1) forwards; }
+
+.fighter-hit {
+  animation: fighter-hit 420ms steps(2, end) forwards;
+  filter:
+    saturate(0.38)
+    brightness(1.08)
+    contrast(0.94)
+    drop-shadow(0 0 13px rgba(255, 214, 170, 0.32));
+}
+
+.combat-callout { animation: callout 800ms steps(4, end) both; }
+
+@keyframes fighter-idle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+@keyframes windup-left { to { transform: translateX(-16px) rotate(-1deg); } }
+@keyframes windup-right { to { transform: translateX(16px) rotate(1deg); } }
+
+@keyframes attack-left {
+  0% { transform: translateX(-12px); }
+  48% { transform: translateX(70px); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes attack-right {
+  0% { transform: translateX(12px); }
+  48% { transform: translateX(-70px); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes fighter-hit {
+  0%, 100% { transform: translateX(0); }
+  30% { transform: translateX(-13px); }
+  55% { transform: translateX(11px); }
+  75% { transform: translateX(-6px); }
+}
+
+@keyframes callout {
+  0% { opacity: 0; transform: translate(-50%, 22px) scale(0.6); }
+  25% { opacity: 1; transform: translate(-50%, 0) scale(1.15); }
+  75% { opacity: 1; transform: translate(-50%, 0) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -12px) scale(1); }
+}
+
+@media (max-width: 640px) {
+  .brand-lockup { gap: 9px; }
+  .brand-emblem { width: 44px; height: 40px; }
+  .brand-kicker span:last-child,
+  .brand-kicker-line { display: none; }
+  .brand-name { gap: 5px; font-size: 13px; }
+  .arena { min-height: 410px; }
+  .fighter-sprite { width: min(48vw, 205px); }
+  .fighter-left.fighter-attack { animation-name: attack-left-mobile; }
+  .fighter-right.fighter-attack { animation-name: attack-right-mobile; }
+}
+
+@keyframes attack-left-mobile {
+  0% { transform: translateX(-8px); }
+  48% { transform: translateX(34px); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes attack-right-mobile {
+  0% { transform: translateX(8px); }
+  48% { transform: translateX(-34px); }
+  100% { transform: translateX(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
